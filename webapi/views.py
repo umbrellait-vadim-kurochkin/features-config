@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def stream_list(request):
+    return render(request, 'templates/stream_list.html', {})
