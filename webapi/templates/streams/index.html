@@ -1,0 +1,18 @@
+<html>
+    <head>
+        Стримы
+    </head>
+    <body>
+        {% if stream_list %}
+            <ul>
+            {% for stream in stream_list %}
+                <li>
+                    <a href="{% url 'stream_detail' stream.id %}">{{ stream.title }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No streams are available.</p>
+        {% endif %}
+    </body> 
+</html>

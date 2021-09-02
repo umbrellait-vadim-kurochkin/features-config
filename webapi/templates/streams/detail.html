@@ -1,0 +1,26 @@
+<html>
+    <head>
+        Стрим #{{ stream.id }}
+    </head>
+    <body>
+        <form action="{% url 'update_stream' stream.id %}" method="post">
+            {% csrf_token %}
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            <div>
+                <label for="title">Название: </label>
+                <input type="text" name="title" value="{{ stream.title }}" maxlength="200" required>
+            </div>
+            <div>
+                <label for="code">Код: </label>
+                <input type="text" name="code" value="{{ stream.code }}" maxlength="30" required>
+            </div>
+            <div>
+                <label for="description">Описание: </label>
+                <input type="text" name="description" value="{{ stream.description }}">
+            </div>
+            <input type="submit" value="Сохранить">
+        </form>
+    </body> 
+</html>
