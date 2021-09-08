@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.button__submit {
+    padding: 0 20px;
+}
+
+.item {
+    margin-bottom: 4px;
+}
+
+.item__img {
+    height: 200px;
+}

@@ -1,0 +1,26 @@
+<html>
+    <head>
+        Создание стрима
+    </head>
+    <body>
+        <form action="{% url 'create_stream' %}" method="post">
+            {% csrf_token %}
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            <div>
+                <label for="title">Название: </label>
+                <input type="text" name="title" maxlength="200" required>
+            </div>
+            <div>
+                <label for="code">Код: </label>
+                <input type="text" name="code" maxlength="30" required>
+            </div>
+            <div>
+                <label for="description">Описание: </label>
+                <input type="text" name="description">
+            </div>
+            <input type="submit" value="Сохранить">
+        </form>
+    </body> 
+</html>

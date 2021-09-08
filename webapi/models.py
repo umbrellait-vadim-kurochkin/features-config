@@ -1,18 +1,15 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.core.validators import MinLengthValidator
 
 class Stream(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
-    title = models.CharField(max_length=200)
-    code = models.CharField(max_length=30) #min_length=3
-    project_code = models.UUIDField()
-    description = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-
-    def create(self):
-        #self.created_date = timezone.now()
-        self.save()
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, editable=False)
+    title = models.CharField(max_length=200, unique=True)
+    code = models.CharField(max_length=30, unique=True, validators=[MinLengthValidator(3)]) #min_length=3
+    project_code = models.UUIDField(default="84989767-80db-4b66-b45b-ca4454d49d8a", editable=False)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
         return self.title
