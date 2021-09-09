@@ -9,18 +9,22 @@
                 <p><strong>{{ error_message }}</strong></p>
             {% endif %}
             <div>
-                <label for="title">Название: </label>
-                <input type="text" name="title" maxlength="200" required>
+                {{ form.title.errors }}
+                <label for={{ form.title.id_for_label }}>Название: </label>
+                {{ form.title }}
             </div>
             <div>
-                <label for="code">Код: </label>
-                <input type="text" name="code" maxlength="30" required>
+                {{ form.code.errors }}
+                <label for={{ form.code.id_for_label }}>Код: </label>
+                {{ form.code }}
             </div>
             <div>
-                <label for="description">Описание: </label>
-                <input type="text" name="description">
+                {{ form.description.errors }}
+                <label for={{ form.description.id_for_label }}>Описание: </label>
+                {{ form.description }}
             </div>
             <input type="submit" value="Сохранить">
+            <a class="button button__submit" href="{% url 'stream_list' %}">Назад</a>
         </form>
     </body> 
 </html>
