@@ -17,8 +17,8 @@ class StreamIndexViewTests(TestCase):
         """
         Streams are displayed on the index page.
         """
-        streamA = Stream.objects.create()
-        streamB = Stream.objects.create()
+        streamA = Stream.objects.create(title='A', code='A')
+        streamB = Stream.objects.create(title='B', code='B')
         
         response = self.client.get(reverse('stream_list'))
         self.assertQuerysetEqual(
